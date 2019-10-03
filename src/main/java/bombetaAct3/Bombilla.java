@@ -25,6 +25,9 @@ public class Bombilla {
     }
 
     public static int getNumeroFundidas() {
+        for (int i = 0; i < listaFundidas.size(); i++) {
+            System.out.println("Bombilla con identificador: "+listaFundidas.get(i).id+" | "+listaFundidas.get(i));
+        }
         return listaFundidas.size();
     }
 

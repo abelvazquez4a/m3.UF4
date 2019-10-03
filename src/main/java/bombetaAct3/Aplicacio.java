@@ -52,7 +52,8 @@ public class Aplicacio {
             System.out.println("bombilla 4 :" + bombilla4);
             System.out.println("\nNumero de bombillas: " + Bombilla.getNumeroBombillas());
             System.out.println("\nNumero de bombillas encendidas: " + Bombilla.getNumeroEncendidas());
-            System.out.println("\nNumero de bombillas fundidas: " + Bombilla.getNumeroFundidas());
+            System.out.println("\nBombillas fundidas: ");
+            System.out.println("Numero de bombillas fundidas: " + Bombilla.getNumeroFundidas());
             System.out.println("\n¿Quieres continuar? true/false\n");
             continuar=entrada.nextBoolean();
         }while(continuar);
