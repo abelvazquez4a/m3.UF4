@@ -1,24 +1,61 @@
 package bombetaAct3;
 
-import com.sun.tools.jdeprscan.scan.Scan;
-
 import java.util.Scanner;
 
 public class Aplicacio {
 
 
     public static void main(String[] args) {
+
         Scanner entrada=new Scanner (System.in);
         Bombilla bombilla1 = new Bombilla(1);
         Bombilla bombilla2 = new Bombilla (5);
         Bombilla bombilla3 = new Bombilla (6);
         Bombilla bombilla4 = new Bombilla (0);
+        boolean continuar=true;
+        do {
+            bombilla1.comprobarEncendidas();
+            bombilla2.comprobarEncendidas();
+            bombilla3.comprobarEncendidas();
+            bombilla4.comprobarEncendidas();
+            bombilla1.comprobarFundidas();
+            bombilla2.comprobarFundidas();
+            bombilla3.comprobarFundidas();
+            bombilla4.comprobarFundidas();
 
-        int opcion=generarMenu();
-        cambiarValores(bombilla,opcion);
-        System.out.println("\nNumero de bombillas: "+Bombilla.getNumeroBombillas());
-        System.out.println("\nNumero de bombillas encendidas: "+Bombilla.getNumeroEncendidas());
-        System.out.println("\nNumero de bombillas fundidas: "+Bombilla.getNumeroFundidas());
+            int opcion = generarMenu();
+
+            System.out.println("bombilla 1 :" + bombilla1);
+            System.out.println("bombilla 2 :" + bombilla2);
+            System.out.println("bombilla 3 :" + bombilla3);
+            System.out.println("bombilla 4 :" + bombilla4);
+
+            System.out.println("\nSelecciona bombilla a manipular.");
+            int eleccion = entrada.nextInt();
+            switch (eleccion) {
+                case 1:
+                    cambiarValores(bombilla1, opcion,eleccion);
+                    break;
+                case 2:
+                    cambiarValores(bombilla2, opcion,eleccion);
+                    break;
+                case 3:
+                    cambiarValores(bombilla3, opcion,eleccion);
+                    break;
+                case 4:
+                    cambiarValores(bombilla4, opcion,eleccion);
+            }
+            System.out.println("\n");
+            System.out.println("bombilla 1 :" + bombilla1);
+            System.out.println("bombilla 2 :" + bombilla2);
+            System.out.println("bombilla 3 :" + bombilla3);
+            System.out.println("bombilla 4 :" + bombilla4);
+            System.out.println("\nNumero de bombillas: " + Bombilla.getNumeroBombillas());
+            System.out.println("\nNumero de bombillas encendidas: " + Bombilla.getNumeroEncendidas());
+            System.out.println("\nNumero de bombillas fundidas: " + Bombilla.getNumeroFundidas());
+            System.out.println("\n¿Quieres continuar? true/false\n");
+            continuar=entrada.nextBoolean();
+        }while(continuar);
     }
 
     public static int generarMenu() {
@@ -33,33 +70,21 @@ public class Aplicacio {
 
         return opcion;
     }
-    public static void cambiarValores(Bombilla bombilla, int opcion){
+
+
+    public static void cambiarValores(Bombilla bombilla, int opcion, int seleccion){
         Scanner entrada=new Scanner(System.in);
         if (opcion==1){
-            System.out.println("Selecciona bombilla a aumentar intensidad en 1");
-            for (int i = 1; i < 4; i++) {
-                bombillaNum.comprobarEncendidas();
-                bombilla[i].comprobarFundidas();
-                System.out.println("Opcion "+i+" "+bombilla[i]);
-            }
-            int eleccion=entrada.nextInt();
-            bombilla[eleccion].aumentarIntensidad();
-            bombilla[eleccion].comprobarEncendidas();
-            bombilla[eleccion].comprobarFundidas();
-            System.out.println("Nuevos valores: "+bombilla[eleccion]);
+            bombilla.aumentarIntensidad();
+            bombilla.comprobarEncendidas();
+            bombilla.comprobarFundidas();
+            System.out.println("\nModificados valores de bombilla: "+seleccion);
         }
         else {
-            System.out.println("Selecciona bombilla a reducir intensidad en 1");
-            for (int i = 0; i < bombilla.length; i++) {
-                bombilla[i].comprobarEncendidas();
-                bombilla[i].comprobarFundidas();
-                System.out.println("Opcion "+i+" "+bombilla[i]);
-            }
-            int eleccion=entrada.nextInt();
-            bombilla[eleccion].reducirIntensidad();
-            bombilla[eleccion].comprobarEncendidas();
-            bombilla[eleccion].comprobarFundidas();
-            System.out.println("Nuevos valores: "+bombilla[eleccion]);
+            bombilla.reducirIntensidad();
+            bombilla.comprobarEncendidas();
+            bombilla.comprobarFundidas();
+            System.out.println("\nModificados valores de bombilla: "+seleccion);
         }
     }
 }

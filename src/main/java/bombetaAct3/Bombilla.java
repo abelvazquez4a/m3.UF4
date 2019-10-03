@@ -1,28 +1,31 @@
 package bombetaAct3;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Bombilla {
     private int intensidad;
     private boolean funciona;
     private boolean estaEncendida;
+    private static int aumentarId=0;
     private int id;
     private static int numeroBombillas;
-    private static int numeroEncendidas;
-    private static int numeroFundidas;
+    private static ArrayList<Bombilla> listaEncendidas = new ArrayList<Bombilla>();
+    private static ArrayList<Bombilla> listaFundidas = new ArrayList<Bombilla>();
 
     public Bombilla(int intensidad) {
-        id++;
         this.intensidad = intensidad;
         numeroBombillas++;
+        aumentarId++;
+        id=aumentarId;
     }
 
     public static int getNumeroEncendidas() {
-        return numeroEncendidas;
+        return listaEncendidas.size();
     }
 
     public static int getNumeroFundidas() {
-        return numeroFundidas;
+        return listaFundidas.size();
     }
 
     public int getIntensidad() {
@@ -66,24 +69,41 @@ public class Bombilla {
 
     public void comprobarFundidas (){
         if (intensidad>5){
-            numeroFundidas++;
             setFunciona(false);
+            if (!listaFundidas.contains(this)){
+                listaFundidas.add(this);
+            }
         }
-        else setFunciona(true);
+        else {
+            if (!listaFundidas.contains(this)){
+                setFunciona(true);
+            }
+        }
     }
     public void comprobarEncendidas(){
-        if (intensidad>0&&intensidad<=5){
-            numeroEncendidas++;
+        if (intensidad>0&&intensidad<=5&&!listaFundidas.contains(this)){
             setEstaEncendida(true);
+            if (!listaEncendidas.contains(this)){
+                listaEncendidas.add(this);
+            }
         }
         else {
             setEstaEncendida(false);
+            if (listaEncendidas.contains(this)){
+                listaEncendidas.remove(this);
+            }
         }
     }
     public void aumentarIntensidad(){
         intensidad++;
     }
     public void reducirIntensidad(){
-        intensidad--;
+        if ((intensidad)-1>=0){
+            intensidad--;
+        }
+        else {
+            System.out.println("\nNo se puede bajar la intensidad por debajo de 0");
+        }
     }
+
 }
