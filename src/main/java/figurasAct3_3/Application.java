@@ -5,10 +5,10 @@ import java.awt.*;
 public class Application {
     public static void main(String[] args) {
         Shape shape;
-        shape = new Shape();
-        System.out.println(shape instanceof Shape);
-        System.out.println(shape instanceof Circle);
-        System.out.println(shape instanceof Object);
+//        shape = new Shape();
+//        System.out.println(shape instanceof Shape);
+//        System.out.println(shape instanceof Circle);
+//        System.out.println(shape instanceof Object);
         Shape shape2;
         shape2 = new Circle (new Point(0,0),1);
         System.out.println(shape2 instanceof Shape);
