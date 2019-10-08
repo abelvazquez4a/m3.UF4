@@ -18,7 +18,6 @@ public class Application {
         shape2Cast.setDoubleRadius();
         Shape shape3;
         shape3 = new Rectangle(new Point(1,0),50.0,40.0);
-
     }
 
 }

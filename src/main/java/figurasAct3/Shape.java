@@ -2,19 +2,21 @@ package figurasAct3;
 
 import java.awt.*;
 
-public class Shape {
+public abstract class Shape {
 
     private Color color;
     private Point origin;
     final static Color ColorDef = Color.white;
 
-    public double area(){
-        return 0;
-    }
+    //Declareu a Shape 4 camps públics: un de public, un de protected, un de private i un sense tipus.
+    private int numeroLados;
+    public String nombreFigura;
+    protected int longitudBase;
+    int altura;
 
-    public double perimeter(){
-        return 0;
-    }
+    public abstract double area();
+
+    public abstract double perimeter();
 
     public Color getColor() {
         return color;
@@ -44,4 +46,5 @@ public class Shape {
 
     protected Shape() {
     }
+
 }

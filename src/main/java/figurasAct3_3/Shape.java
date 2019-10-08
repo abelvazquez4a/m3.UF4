@@ -2,7 +2,7 @@ package figurasAct3_3;
 
 import java.awt.*;
 
-public class Shape {
+public abstract class Shape {
 
     private Color color;
     private Point origin;
@@ -14,13 +14,9 @@ public class Shape {
     protected int longitudBase;
     int altura;
 
-    public double area(){
-        return 0;
-    }
+    public abstract double area();
 
-    public double perimeter(){
-        return 0;
-    }
+    public abstract double perimeter();
 
     public Color getColor() {
         return color;

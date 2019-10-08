@@ -1,5 +1,7 @@
 package figurasAct3;
 
+import figurasAct3_3.Shape;
+
 import java.awt.*;
 
 public class Rectangle extends Shape {
